@@ -1,0 +1,23 @@
+<div class="title-bar">
+  <div><span class="styled">Recipe</span> {{ title | titlecase }}</div>
+  <div class="navigation">
+    <button
+      class="btn form"
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="goToFormPg()"
+    >
+      Form
+    </button>
+    <button
+      class="btn list"
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="goToListPg()"
+    >
+      list
+    </button>
+  </div>
+</div>

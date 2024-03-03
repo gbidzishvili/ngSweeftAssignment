@@ -1,0 +1,15 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 15rem auto;
+  mat-icon {
+    color: red;
+    align-self: center;
+    margin-bottom: 1.5rem;
+  }
+  .sub-header {
+    margin-bottom: 3rem;
+  }
+}

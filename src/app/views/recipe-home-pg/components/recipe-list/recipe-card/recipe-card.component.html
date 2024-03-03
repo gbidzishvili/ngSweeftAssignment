@@ -1,0 +1,31 @@
+<mat-card class="recipe-card">
+  <mat-card-header>
+    <img mat-card-xl-image [src]="recipe.image" />
+    <mat-icon *ngIf="recipe.vegie" class="category-icon">eco</mat-icon>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-title>
+      <span>{{ recipe.name }}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span>{{ recipe.description }}</span>
+    </mat-card-subtitle>
+    <div class="description">
+      <div class="description-inner-cont">
+        <mat-icon class="description-icon">favorite</mat-icon>
+        <span>favorite</span>
+      </div>
+      <div class="description-inner-cont">
+        <mat-icon class="description-icon">edit_outlined</mat-icon>
+        <span>edit</span>
+      </div>
+      <div class="description-inner-cont">
+        <mat-icon class="description-icon">delete_outlined</mat-icon>
+        <span>delete</span>
+      </div>
+    </div>
+    <button (click)="navigateToDetails()" routerLink="/home/details">
+      VIEW RECIPE
+    </button>
+  </mat-card-content>
+</mat-card>
