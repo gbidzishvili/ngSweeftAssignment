@@ -1,6 +1,18 @@
-# NgSweefAssignment
+# NgSweeftRecipeSharingProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+
+## Prerequisites
+
+Before you begin, ensure you have Node.js installed, which includes npm for managing dependencies.
+
+## Installation
+
+After cloning the project, navigate to the project directory and run the following command to install all dependencies:
+
+npm install
+
+This command reads the package.json file and installs the necessary packages required by the project.
 
 ## Development server
 
@@ -18,11 +30,14 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## start json-server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npx json-server --watch db.json` to start json-server
 
-## Further help
+## Tools
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-"# ngSweeftAssignment" 
+This project uses dynamic reactive forms to dynamically add or remove recipe ingredients or directions.
+
+## libraries
+
+angular material,SweetAlert2
