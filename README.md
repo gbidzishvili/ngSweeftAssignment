@@ -41,3 +41,16 @@ This project uses dynamic reactive forms to dynamically add or remove recipe ing
 ## libraries Used
 
 angular material,SweetAlert2
+
+## description
+
+this is recipe project that uses `json-server` as mock backend.
+projects covers crud operations. Besides that you are able to add delete edit recipes.
+also you can add it to the favorites list and than fitler list with favorites.
+
+```bash
+git clone https://github.com/yourusername/yourprojectname.git
+cd yourprojectname
+npm install
+ng serve
+```

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { RecipeService } from '../../../../core/services/recipe-service.service';
 import { Observable } from 'rxjs';
 import { Recipe } from '../../../../shared/models/recipe.model';
@@ -17,7 +17,15 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
     this.getList();
-    if (this.updateList) this.getFilteredListByFavorites();
+  }
+  // Check if `updateList` has changed
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['updateList']) {
+      this.handleUpdateListChange();
+    }
+  }
+  private handleUpdateListChange() {
+    this.updateList ? this.getFilteredListByFavorites() : this.getList();
   }
 
   getList() {
@@ -35,7 +43,8 @@ export class RecipeListComponent implements OnInit {
     console.log(id);
     this.recipes = this.recipes.filter((recipe) => recipe.id !== id);
   }
-  onUpdateParent() {
+
+  UpdateParentSubs() {
     this.getList();
   }
 }

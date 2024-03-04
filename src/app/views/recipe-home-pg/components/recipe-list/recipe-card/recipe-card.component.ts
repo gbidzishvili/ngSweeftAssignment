@@ -11,10 +11,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './recipe-card.component.scss',
 })
 export class RecipeCardComponent {
-  @Output()
-  recipeDeleted = new EventEmitter<number>();
-  @Output()
-  updateParent = new EventEmitter<number>();
+  @Output() recipeDeleted = new EventEmitter<number>();
+  @Output() updateParent = new EventEmitter<number>();
   @Input()
   recipe!: Recipe;
 

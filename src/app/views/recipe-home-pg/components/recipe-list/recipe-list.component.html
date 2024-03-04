@@ -3,6 +3,6 @@
     *ngFor="let recipe of recipes"
     [recipe]="recipe"
     (recipeDeleted)="onRecipeDeleted($event)"
-    (updateParent)="onUpdateParent()"
+    (updateParent)="UpdateParentSubs()"
   ></app-recipe-card>
 </div>
