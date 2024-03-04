@@ -1,6 +1,56 @@
 .grid-container {
   padding: 0 5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 3.5rem;
+  grid-template-columns: repeat(
+    1,
+    1fr
+  ); /* Start with 1 column for small devices */
+}
+
+/* Medium devices (phones in landscape to tablets in portrait) */
+// @media screen and (min-width: 425px) {
+//   .grid-container {
+//     grid-template-columns: repeat(
+//       2,
+//       1fr
+//     ); /* 2 columns for widths 426px to 768px */
+//   }
+// }
+
+//  Large devices (tablets in landscape) */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    padding: 0 10rem;
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* Keeping 2 columns for widths 769px to 1024px */
+  }
+}
+@media screen and (min-width: 769px) {
+  .grid-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Keeping 2 columns for widths 769px to 1024px */
+  }
+}
+
+/* Extra large devices (desktops) */
+@media screen and (min-width: 1025px) {
+  .grid-container {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 4 columns for widths above 1024px */
+  }
+  @media screen and (min-width: 1440px) {
+    .grid-container {
+      grid-template-columns: repeat(
+        4,
+        1fr
+      ); /* 4 columns for widths above 1024px */
+    }
+  }
 }
