@@ -38,6 +38,6 @@ Run `npx json-server --watch db.json` to start json-server
 
 This project uses dynamic reactive forms to dynamically add or remove recipe ingredients or directions.
 
-## libraries
+## libraries Used
 
 angular material,SweetAlert2

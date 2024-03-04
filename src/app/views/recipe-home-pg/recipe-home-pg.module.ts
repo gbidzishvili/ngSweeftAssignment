@@ -12,8 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
     RecipeHomePgComponent,
     RecipeListComponent,
     RecipeCardComponent,
-    // MatCardModule,
-    // MatFormFieldModule,
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,122 @@
-<p>recipe-form-pg works!</p>
+<form class="recipe-form" [formGroup]="recipeForm" (ngSubmit)="onFormsubmit()">
+  <!-- <div class="flex-container"> -->
+  <div class="name">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="recipeForm.invalid">
+        <ng-container *ngFor="let errorType of errors">
+          <span *ngIf="checkIfInputHasError('name', errorType)">
+            {{ errorMessages[errorType] }}</span
+          >
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="description">
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="recipeForm.invalid">
+        <ng-container *ngFor="let errorType of errors">
+          <span *ngIf="checkIfInputHasError('description', errorType)">
+            {{ errorMessages[errorType] }}</span
+          >
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <!-- custom file uploader -->
+  <input
+    type="file"
+    class="file-input"
+    (input)="onFileSelected($event)"
+    #fileUpload
+  />
+
+  <div
+    class="file-upload"
+    [ngClass]="{ error: (fileName$ | async) === '* File upload is required' }"
+  >
+    {{ (fileName$ | async) || "No image uploaded yet." }}
+
+    <button
+      type="button"
+      mat-mini-fab
+      color="primary"
+      class="upload-btn white"
+      (click)="fileUpload.click()"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+
+  <!-- add ingredients -->
+  <article class="ingredient" formArrayName="ingredients">
+    <div *ngFor="let ingredient of getIngredients().controls; let idx = index">
+      <mat-form-field appearance="fill">
+        <mat-label>Ingredient</mat-label>
+        <input matInput [formControlName]="idx" />
+        <mat-icon
+          (click)="removeIngredientBtnClick(idx)"
+          matSuffix
+          class="remove remove-direction"
+          >close</mat-icon
+        >
+        <mat-error *ngIf="recipeForm.invalid">
+          <ng-container *ngFor="let errorType of errors">
+            <span *ngIf="checkIfInputHasError('description', errorType)">
+              {{ errorMessages[errorType] }}</span
+            >
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </article>
+  <button
+    class="btn-add-ingredient"
+    (click)="addNewIngredientBtnClidk()"
+    mat-raised-button
+    color="basic"
+    type="button"
+  >
+    Add new ingredients
+  </button>
+
+  <article class="direction" formArrayName="directions">
+    <div *ngFor="let ingredient of getDirections().controls; let idx = index">
+      <mat-form-field appearance="fill">
+        <mat-label>Direction</mat-label>
+        <input matInput [formControlName]="idx" />
+        <mat-icon
+          (click)="removeDirectionBtnClick(idx)"
+          matSuffix
+          class="remove remove-direction"
+          >close</mat-icon
+        >
+        <mat-error *ngIf="recipeForm.invalid">
+          <ng-container *ngFor="let errorType of errors">
+            <span *ngIf="checkIfInputHasError('description', errorType)">
+              {{ errorMessages[errorType] }}</span
+            >
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </article>
+  <button
+    class="btn-add-directions"
+    (click)="addNewDirectionBtnClidk()"
+    mat-raised-button
+    color="basic"
+    type="button"
+  >
+    Add new Directions
+  </button>
+  <mat-checkbox formControlName="vegie" color="primary"
+    >This recipe is vegan</mat-checkbox
+  >
+  <button class="btn-submit" mat-raised-button color="basic" type="submit">
+    Submit
+  </button>
+</form>

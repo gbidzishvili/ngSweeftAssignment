@@ -13,6 +13,6 @@ export class RecipeCardComponent {
   constructor(private router: Router) {}
 
   navigateToDetails() {
-    // this.router.navigate(['/home', 'details']);
+    this.router.navigate(['/details']);
   }
 }

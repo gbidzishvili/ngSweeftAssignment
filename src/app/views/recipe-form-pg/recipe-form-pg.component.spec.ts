@@ -8,10 +8,9 @@ describe('RecipeFormPgComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RecipeFormPgComponent]
-    })
-    .compileComponents();
-    
+      declarations: [RecipeFormPgComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RecipeFormPgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

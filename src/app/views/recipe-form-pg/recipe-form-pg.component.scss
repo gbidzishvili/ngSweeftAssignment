@@ -1,0 +1,87 @@
+:host ::ng-deep .mat-mdc-mini-fab.mat-primary {
+  --mdc-fab-small-container-color: #e19d1dab;
+}
+.recipe-form {
+  min-width: 150px;
+  max-width: 500px;
+  margin: 7rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  .name {
+    grid-column: 1/-1;
+  }
+  .description {
+    grid-column: 1/-1;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid orange;
+    border-radius: 1rem;
+    grid-column: 1/-1;
+    margin-bottom: 2rem;
+  }
+  .error {
+    color: red;
+    transition: color 0.5s;
+  }
+
+  mat-checkbox {
+    grid-column: 1/-1;
+    margin-bottom: 3rem;
+  }
+  .level {
+    grid-column: 1 / -1; /* Span across all columns in a 2-column grid */
+    justify-self: center;
+  }
+  .remove {
+    color: black;
+  }
+  .remove:hover {
+    color: red;
+    cursor: pointer;
+  }
+  .ingredient {
+    grid-column: 1/-1;
+    .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+      display: none;
+    }
+  }
+  .direction {
+    grid-column: 1/-1;
+  }
+  .btn-add-ingredient {
+    margin-bottom: 2rem;
+  }
+  .btn-add-directions {
+    margin-bottom: 2rem;
+  }
+  .btn-submit {
+    grid-column: 1/-1;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  button {
+    background: linear-gradient(90deg, orange 0%, rgb(255, 123, 0) 100%);
+    color: #fff;
+  }
+  button.btn-submit[disabled] {
+    opacity: 0.7;
+    cursor: pointer !important;
+  }
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
