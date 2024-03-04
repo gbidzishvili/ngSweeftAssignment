@@ -6,4 +6,5 @@ export interface Recipe {
   ingredients: string[];
   directions: string[];
   vegie: boolean;
+  favourites: boolean;
 }

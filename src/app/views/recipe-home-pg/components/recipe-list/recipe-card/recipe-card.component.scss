@@ -1,7 +1,7 @@
 @use "../../../../../shared/styles/palette" as *;
 mat-card {
   border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px $black-shadow;
   overflow: hidden;
   transition: transform 0.3s ease; /* Smooth transition for the movement */
 
@@ -51,20 +51,26 @@ mat-card {
       display: flex;
       justify-content: space-around;
       margin-bottom: 1rem;
-      color: #d3d3d3;
+      color: $gray-light;
       width: 100%;
+      .black {
+        color: $black-dark;
+      }
       &-inner-cont {
         gap: 0.3rem;
         display: flex;
         justify-content: center;
         flex-direction: column;
+        .red {
+          color: $red-color;
+        }
         mat-icon {
           align-self: center;
           transition: transform 0.3s ease;
         }
       }
       &-inner-cont:hover {
-        color: rgb(31, 31, 31);
+        color: $black-light;
         cursor: pointer;
       }
       span {

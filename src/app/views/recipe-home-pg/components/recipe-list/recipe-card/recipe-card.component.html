@@ -1,5 +1,5 @@
 <mat-card class="recipe-card">
-  <mat-card-header (click)="navigateToDetails(recipe.id)">
+  <mat-card-header (click)="goToDetails(recipe.id)">
     <img mat-card-xl-image [src]="recipe.image" />
     <mat-icon *ngIf="recipe.vegie" class="category-icon">eco</mat-icon>
   </mat-card-header>
@@ -11,9 +11,16 @@
       <span>{{ recipe.description }}</span>
     </mat-card-subtitle>
     <div class="description">
-      <div class="description-inner-cont">
-        <mat-icon class="description-icon">favorite</mat-icon>
-        <span>favorite</span>
+      <div
+        (click)="updateFavouritesStatus(recipe)"
+        class="description-inner-cont"
+      >
+        <mat-icon
+          [ngClass]="{ red: recipe.favourites }"
+          class="description-icon"
+          >favorite</mat-icon
+        >
+        <span [ngClass]="{ black: recipe.favourites }">favorite</span>
       </div>
       <div (click)="edit(recipe.id)" class="description-inner-cont">
         <mat-icon class="description-icon">edit_outlined</mat-icon>
@@ -24,7 +31,7 @@
         <span>delete</span>
       </div>
     </div>
-    <button (click)="navigateToDetails(recipe.id)" routerLink="/home/details">
+    <button (click)="goToDetails(recipe.id)" routerLink="/home/details">
       VIEW RECIPE
     </button>
   </mat-card-content>

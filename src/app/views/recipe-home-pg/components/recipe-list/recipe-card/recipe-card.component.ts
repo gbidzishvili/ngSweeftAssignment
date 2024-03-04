@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Recipe } from '../../../models/recipe.model';
+import { Recipe } from '../../../../../shared/models/recipe.model';
 import { RecipeService } from '../../../../../core/services/recipe-service.service';
 import { ShareCardDataService } from '../../../../../shared/services/share-card-data.service';
 import { BehaviorSubject } from 'rxjs';
@@ -15,24 +15,32 @@ export class RecipeCardComponent {
   recipeDeleted = new EventEmitter<number>();
   @Input()
   recipe!: Recipe;
+
   constructor(
     private router: Router,
     private recipeService: RecipeService,
     private shareDataService: ShareCardDataService
   ) {}
 
-  navigateToDetails(id: number) {
+  // goes to details page
+  goToDetails(id: number) {
     this.shareDataService.selectedRecipeId.next(id);
     this.router.navigate(['/details']);
   }
+  // editing recipe
   edit(id: number) {
-    this.router.navigate(['/form']);
     this.shareDataService.selectedRecipeId.next(id);
-    // this.recipeService.updateRecipe(id);
+    this.router.navigate(['/form']);
   }
+  // deleting recipe
   deleteRecipe(id: number) {
     this.recipeService
       .deleteRecipe(id)
       .subscribe(() => this.recipeDeleted.emit(id));
+  }
+  // Method to update Favourites Status
+  updateFavouritesStatus(recipe: Recipe) {
+    const favorites = this.recipe.favourites ? false : true;
+    this.recipeService.updateFavouritesStatus(recipe.id, favorites).subscribe();
   }
 }

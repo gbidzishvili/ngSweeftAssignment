@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recipe } from '../../views/recipe-home-pg/models/recipe.model';
+import { Recipe } from '../../shared/models/recipe.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,5 +19,16 @@ export class RecipeService {
   }
   deleteRecipe(id: number) {
     return this.http.delete(`http://localhost:3000/recipes/${id}`);
+  }
+  updateFavouritesStatus(
+    recipeId: number,
+    isFavourite: boolean
+  ): Observable<any> {
+    // Construct the request body to specifically update the 'favourites' property
+    const requestBody = { favourites: isFavourite };
+    return this.http.patch(
+      `http://localhost:3000/recipes/${recipeId}`,
+      requestBody
+    );
   }
 }
