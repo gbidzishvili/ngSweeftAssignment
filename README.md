@@ -40,9 +40,10 @@ A step-by-step series of examples that tell you how to get a development environ
 
 ![structure image](./src/assets/images/diagram.png "Optional title")
 
-## Tools
+## libraries
 
-This project uses dynamic reactive forms to dynamically add or remove recipe ingredients or directions.
+*sweetAlerts
+*angular material
 
 #Author
 
