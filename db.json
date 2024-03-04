@@ -28,7 +28,7 @@
       "name": "caesar",
       "description": "caesar salad with exptra vegetables",
       "vegie": false,
-      "favourites": false
+      "favourites": true
     },
     {
       "name": "bread1",

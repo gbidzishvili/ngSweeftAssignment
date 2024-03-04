@@ -17,10 +17,8 @@ export class RecipeDetailsPgComponent implements OnInit {
       if (this.shareDataService.getRecipe(id)) {
         this.recipeData$ = this.shareDataService.getRecipe(id).pipe(
           catchError((error) => {
-            // Handle the error here
             console.error('Error fetching recipe:', error);
-            // Return an empty Observable, an Observable with default values, or throwError as needed
-            return of(null); // Example: returning `null` to indicate an error was caught
+            return of(null);
           })
         );
       }

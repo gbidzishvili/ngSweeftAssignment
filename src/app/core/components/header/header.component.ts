@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ShareCardDataService } from '../../../shared/services/share-card-data.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   private subscriptioin!: Subscription;
   title: string | undefined = 'List';
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private shareDataService: ShareCardDataService
+  ) {}
   ngOnInit(): void {
     this.subscriptioin = this.router.events.subscribe(() => {
       let path = this.activatedRoute.snapshot.firstChild?.routeConfig?.path;
@@ -18,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
   goToFormPg() {
+    this.shareDataService.selectedRecipeId.next(null);
     this.router.navigate(['/form']);
   }
   goToListPg() {
