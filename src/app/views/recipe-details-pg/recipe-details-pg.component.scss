@@ -2,18 +2,20 @@
 section {
   display: flex;
   height: 100%;
+
   .meal-preview {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     margin: 10rem auto;
+    gap: 4rem;
     padding: 2rem;
     width: 80%;
 
     img {
-      min-width: 400px;
-      max-width: 600px;
-      max-height: 400px;
+      min-width: 40rem;
+      max-width: 60rem;
+      max-height: 40rem;
       border-radius: 2rem;
       border-bottom-right-radius: 0;
       border-top-left-radius: 0;
@@ -23,12 +25,16 @@ section {
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      gap: 2rem;
       padding: 4rem;
       font-weight: 700;
       .title {
         font-weight: 700;
-        font-size: 32px;
+        font-size: 3.2rem;
         line-height: 3.2rem;
+      }
+      .details {
+        font-size: 2rem;
       }
       .gold {
         color: $gold-color;

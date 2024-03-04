@@ -1,16 +1,24 @@
-<section>
+<section *ngIf="recipeData$ | async as recipe">
   <article class="meal-preview">
-    <img
-      src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      alt="food-image"
-    />
+    <img [src]="recipe.image" alt="food-image" />
     <div class="description">
-      <span class="title">Fetuccine pasta with shrimp and tomatoes</span>
-      <div class="details">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-        incidunt laboriosam quaerat voluptas. Similique omnis consectetur
-        placeat nobis<span class="gold"> cumque possimus.</span>
-      </div>
+      <span class="title gold">{{ recipe.name }}</span>
+      <em class="details">
+        {{ recipe.description }}
+      </em>
+    </div>
+    <div class="ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+      </ul>
+    </div>
+
+    <div class="ingredients">
+      <h3>directions</h3>
+      <ol>
+        <li *ngFor="let direction of recipe.directions">{{ direction }}</li>
+      </ol>
     </div>
   </article>
 </section>

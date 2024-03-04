@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '../../../models/recipe.model';
 import { RecipeService } from '../../../../../core/services/recipe-service.service';
+import { ShareCardDataService } from '../../../../../shared/services/share-card-data.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-card',
@@ -11,9 +13,14 @@ import { RecipeService } from '../../../../../core/services/recipe-service.servi
 export class RecipeCardComponent {
   @Input()
   recipe!: Recipe;
-  constructor(private router: Router, private recipeService: RecipeService) {}
+  constructor(
+    private router: Router,
+    private recipeService: RecipeService,
+    private shareDataService: ShareCardDataService
+  ) {}
 
-  navigateToDetails() {
+  navigateToDetails(id: number) {
+    this.shareDataService.selectedRecipeId.next(id);
     this.router.navigate(['/details']);
   }
   edit(id: number) {
