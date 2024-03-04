@@ -21,9 +21,24 @@ A step-by-step series of examples that tell you how to get a development environ
 
 1. **Clone the repository**
 
-   ````bash
-   git clone https://github.com/yourusername/yourprojectname.git```
-   ````
+   ```bash
+   git clone https://github.com/yourusername/yourprojectname.git
+
+   ```
+
+2. **Navigate to the project directory**
+
+`cd yourprojectname`
+
+3. **Install dependencies**
+
+`npm install`
+
+4. **Serve the application**
+
+5. Visit http://localhost:4200/ to view the application
+
+` ng serve`
 
 After cloning the project, navigate to the project directory and run the following command to install all dependencies:
 
