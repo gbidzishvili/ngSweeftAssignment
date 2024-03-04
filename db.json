@@ -14,24 +14,39 @@
       "description": "Fetuccine pasta with caramelized onions",
       "image": "https://images.unsplash.com/photo-1611270629569-8b357cb88da9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "vegie": false,
-      "ingredients": ["sd"],
-      "directions": ["sdf"]
+      "ingredients": [
+        "sd"
+      ],
+      "directions": [
+        "sdf"
+      ],
+      "favourites": false
     },
     {
       "id": "asdfs",
       "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "name": "caesar",
       "description": "caesar salad with exptra vegetables",
-      "vegie": false
+      "vegie": false,
+      "favourites": false
     },
     {
       "name": "bread1",
       "description": "homemade sourdough bread1",
       "image": "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "vegie": true,
-      "ingredients": ["ing11", "ing21", "ing31"],
-      "directions": ["dir11", "dir21", "dir31"],
-      "id": "1b8d"
+      "ingredients": [
+        "ing11",
+        "ing21",
+        "ing31"
+      ],
+      "directions": [
+        "dir11",
+        "dir21",
+        "dir31"
+      ],
+      "id": "1b8d",
+      "favourites": true
     }
   ]
 }

@@ -13,6 +13,8 @@ import { BehaviorSubject } from 'rxjs';
 export class RecipeCardComponent {
   @Output()
   recipeDeleted = new EventEmitter<number>();
+  @Output()
+  updateParent = new EventEmitter<number>();
   @Input()
   recipe!: Recipe;
 
@@ -41,6 +43,9 @@ export class RecipeCardComponent {
   // Method to update Favourites Status
   updateFavouritesStatus(recipe: Recipe) {
     const favorites = this.recipe.favourites ? false : true;
-    this.recipeService.updateFavouritesStatus(recipe.id, favorites).subscribe();
+    console.log('favs', favorites);
+    this.recipeService
+      .updateFavouritesStatus(recipe.id, favorites)
+      .subscribe(() => this.updateParent.emit());
   }
 }

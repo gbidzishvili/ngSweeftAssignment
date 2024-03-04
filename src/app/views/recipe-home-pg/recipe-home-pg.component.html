@@ -1,1 +1,4 @@
-<app-recipe-list></app-recipe-list>
+<app-filter-favorites
+  (filterListEvent)="filterListEventSubs()"
+></app-filter-favorites>
+<app-recipe-list [updateList]="updateList"></app-recipe-list>
