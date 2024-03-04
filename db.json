@@ -1,13 +1,6 @@
 {
   "recipes": [
     {
-      "id": "1",
-      "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "name": "steak",
-      "description": "with truffle oil fries on",
-      "vegie": false
-    },
-    {
       "id": "2",
       "image": "https://images.unsplash.com/photo-1565299543923-37dd37887442?q=80&w=1981&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "name": "pancake",
@@ -41,8 +34,16 @@
       "name": "bread",
       "description": "homemade sourdough bread",
       "vegie": false,
-      "ingredients": ["ing1", "ing2", "ing3"],
-      "directions": ["dir1", "dir2", "dir3"]
+      "ingredients": [
+        "ing1",
+        "ing2",
+        "ing3"
+      ],
+      "directions": [
+        "dir1",
+        "dir2",
+        "dir3"
+      ]
     }
   ]
 }

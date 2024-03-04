@@ -2,5 +2,6 @@
   <app-recipe-card
     *ngFor="let recipe of recipes$ | async"
     [recipe]="recipe"
+    (recipeDeleted)="onRecipeDeleted()"
   ></app-recipe-card>
 </div>

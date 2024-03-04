@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '../../../models/recipe.model';
 import { RecipeService } from '../../../../../core/services/recipe-service.service';
@@ -11,6 +11,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './recipe-card.component.scss',
 })
 export class RecipeCardComponent {
+  @Output()
+  recipeDeleted = new EventEmitter<number>();
   @Input()
   recipe!: Recipe;
   constructor(
@@ -27,6 +29,8 @@ export class RecipeCardComponent {
     this.recipeService.updateRecipe(id);
   }
   deleteRecipe(id: number) {
-    this.recipeService.deleteRecipe(id);
+    this.recipeService
+      .deleteRecipe(id)
+      .subscribe(() => this.recipeDeleted.emit(id));
   }
 }

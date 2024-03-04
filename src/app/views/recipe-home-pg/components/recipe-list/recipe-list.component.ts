@@ -10,8 +10,19 @@ import { Recipe } from '../../models/recipe.model';
 })
 export class RecipeListComponent implements OnInit {
   public recipes$!: Observable<Recipe[]>;
+
   constructor(private recipeService: RecipeService) {}
+
   ngOnInit() {
+    this.fetchRecipes();
+  }
+
+  fetchRecipes() {
     this.recipes$ = this.recipeService.getRecipes();
+  }
+
+  // Refetch the recipes or remove the recipe from a local list
+  onRecipeDeleted() {
+    this.fetchRecipes();
   }
 }
