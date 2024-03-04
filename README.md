@@ -2,11 +2,28 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
-## Prerequisites
+## Getting Started
 
-Before you begin, ensure you have Node.js installed, which includes npm for managing dependencies.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+What things you need to install the software and how to install them:
+
+```bash
+node -v // Check if Node.js is installed
+npm -v // Check if npm is installed
+```
 
 ## Installation
+
+A step-by-step series of examples that tell you how to get a development environment running:
+
+1. **Clone the repository**
+
+   ````bash
+   git clone https://github.com/yourusername/yourprojectname.git```
+   ````
 
 After cloning the project, navigate to the project directory and run the following command to install all dependencies:
 
@@ -17,18 +34,6 @@ This command reads the package.json file and installs the necessary packages req
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## start json-server
 
