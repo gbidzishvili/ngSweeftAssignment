@@ -34,18 +34,16 @@ A step-by-step series of examples that tell you how to get a development environ
 
 `npm install` 4. **Run npx json-server --watch db.json to start json-server**
 
-```npx json-server --watch db.json
-
+`npx json-server --watch db.json`
 
 ## Application Structure
 
 ![Alt text]("../../src/assets/images/diagram.png" "Optional title")
-
 
 ## Tools
 
 This project uses dynamic reactive forms to dynamically add or remove recipe ingredients or directions.
 
 #Author
-* Giorgi Bidzishvili
-```
+
+- Giorgi Bidzishvili
