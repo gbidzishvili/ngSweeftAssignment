@@ -1,4 +1,5 @@
 @use "../../shared/styles/palette" as *;
+
 section {
   display: flex;
   height: 100%;
@@ -15,7 +16,7 @@ section {
     width: 80%;
 
     img {
-      min-width: 40rem;
+      width: 100%; /* Make image width responsive */
       max-width: 60rem;
       max-height: 40rem;
       border-radius: 2rem;
@@ -57,4 +58,15 @@ section {
       color: $orange-dark-color;
     }
   }
+  @media (max-width: 767px) {
+    article.meal-preview {
+      grid-template-columns: repeat(1, 1fr); /* Change to 1 column */
+    }
+  }
+  @media (min-width: 1440px) {
+    article.meal-preview {
+      grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+    }
+  }
 }
+/* Corrected Media Query Placement */
