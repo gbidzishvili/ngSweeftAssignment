@@ -38,7 +38,7 @@ A step-by-step series of examples that tell you how to get a development environ
 
 ## Application Structure
 
-![Alt text]("../../src/assets/images/diagram.png" "Optional title")
+![structure image]("../../src/assets/images/diagram.png" "Optional title")
 
 ## Tools
 
