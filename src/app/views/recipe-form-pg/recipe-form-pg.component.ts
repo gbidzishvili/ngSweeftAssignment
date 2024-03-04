@@ -8,10 +8,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { RecipeService } from '../../core/services/recipe-service.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ImgFileUploadService } from './services/image-upload/img-file-upload.service';
 import { ErrorMessage } from './models/error-messages.model';
+import { HttpClient } from '@angular/common/http';
+import { ShareCardDataService } from '../../shared/services/share-card-data.service';
+import { Recipe } from '../recipe-home-pg/models/recipe.model';
 
 @Component({
   selector: 'app-recipe-form',
@@ -22,20 +25,17 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
   fileName$: BehaviorSubject<string> = new BehaviorSubject('');
   baseString$: BehaviorSubject<string> = new BehaviorSubject('');
   recipeForm!: FormGroup;
-  formSubscription!: Subscription;
-  errors = ['required', 'maxlength', 'pattern'];
-  errorMessages: ErrorMessage = {
-    required: '* This field is required',
-    maxlength: '* Text cannot exceed 20 characters',
-    // pattern: '* Use only English letters',
-  };
+  recipeData$!: Observable<Recipe>;
+  editMode: boolean = false;
+  editeRecipeId!:number;
+  private subscriptions = new Subscription();
   constructor(
     private fb: FormBuilder,
     private recipeService: RecipeService,
     private imgFileUploadService: ImgFileUploadService,
-    private router: Router
+    private router: Router,
+    private shareDataService: ShareCardDataService
   ) {}
-
   ngOnInit(): void {
     this.recipeForm = this.fb.group({
       name: [null, [Validators.required, Validators.maxLength(20)]],
@@ -49,6 +49,45 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
     this.imgFileUploadService.BaseStringSrv$.subscribe((baseStr) =>
       this.recipeForm.get('image')?.setValue(baseStr)
     );
+
+    // edit mode
+    let recipeEditSubs = this.shareDataService.selectedRecipeId.subscribe(
+      (id: number | null) => {
+        if (id) {
+          this.shareDataService.getRecipe(id).subscribe((res) => {
+            this.fileName$.next(res.image.slice(0, 50));
+            this.editeRecipeId = id
+            console.log("id up",this.editeRecipeId )
+            this.recipeForm.patchValue({
+              name: res.name,
+              description: res.description,
+              image: res.image,
+            });
+            // Rebuild the ingredients FormArray
+            const ingredientControls = res.ingredients.map(
+              (ingredient: string) =>
+                this.fb.control(ingredient, Validators.required)
+            );
+            this.recipeForm.setControl(
+              'ingredients',
+              this.fb.array(ingredientControls)
+            );
+
+            // Rebuild the directions FormArray
+            const directionControls = res.directions.map((direction: string) =>
+              this.fb.control(direction, Validators.required)
+            );
+            this.recipeForm.setControl(
+              'directions',
+              this.fb.array(directionControls)
+            );
+          });
+
+          this.editMode = true;
+        }
+      }
+    );
+    this.subscriptions.add(recipeEditSubs);
   }
   // dynamically adding or removing ingredients and directions
   getIngredients(): FormArray {
@@ -85,7 +124,6 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
     if (control.includes('ingredients') || control.includes('directions')) {
       let formArr = this.recipeForm.get?.(control.split('-')[0]) as FormArray;
       let idx = Number(control.split('-')[1]);
-      console.log(idx);
       return (
         formArr?.controls[idx].touched && formArr?.controls[idx].hasError(error)
       );
@@ -96,24 +134,30 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
       this.recipeForm.get(control)?.hasError(error)
     );
   }
+  updateOnBtnClick(recipeForm: FormGroup) {
+    console.log("id down",this.editeRecipeId )
 
+    this.recipeService
+      .updateRecipe(this.editeRecipeId, recipeForm.value)
+      .subscribe();
+  }
   onFormsubmit() {
-    console.log('recipeForm', this.recipeForm);
     this.recipeForm.markAllAsTouched();
     if (this.recipeForm.valid) {
-      this.formSubscription = this.recipeService
+      let formSubscription = this.recipeService
         .createRecipe(this.recipeForm.value)
         .subscribe();
       this.imgFileUploadService.FileNameSrv$.next('No image uploaded yet.');
       this.imgFileUploadService.BaseStringSrv$.next('');
       this.router.navigate(['/home']);
-
+      this.subscriptions.add(formSubscription);
       return;
     }
     this.fileName$.next('* File upload is required');
   }
 
   ngOnDestroy() {
-    this.formSubscription?.unsubscribe();
+    this.subscriptions.unsubscribe();
+    this.editMode = false;
   }
 }

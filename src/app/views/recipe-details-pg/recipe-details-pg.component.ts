@@ -11,11 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RecipeDetailsPgComponent implements OnInit {
   recipeData$!: Observable<Recipe>;
-  ingredients!: string[];
-  directions!: string[];
-
   constructor(
-    private http: HttpClient,
     private shareDataService: ShareCardDataService
   ) {}
   ngOnInit(): void {

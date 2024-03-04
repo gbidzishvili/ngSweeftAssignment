@@ -26,7 +26,9 @@ export class RecipeCardComponent {
     this.router.navigate(['/details']);
   }
   edit(id: number) {
-    this.recipeService.updateRecipe(id);
+    this.router.navigate(['/form']);
+    this.shareDataService.selectedRecipeId.next(id);
+    // this.recipeService.updateRecipe(id);
   }
   deleteRecipe(id: number) {
     this.recipeService

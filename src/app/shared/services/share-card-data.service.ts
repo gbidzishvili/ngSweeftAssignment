@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Recipe } from '../../views/recipe-home-pg/models/recipe.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

@@ -107,7 +107,15 @@
   <mat-checkbox formControlName="vegie" color="primary"
     >This recipe is vegan</mat-checkbox
   >
-  <button class="btn-submit" mat-raised-button color="basic" type="submit">
+  <!-- <button class="btn-submit" mat-raised-button color="basic" type="submit">
     Submit
+  </button> -->
+  <button
+    class="btn-submit"
+    type="button"
+    mat-raised-button
+    (click)="editMode ? updateOnBtnClick(recipeForm) : onFormsubmit()"
+  >
+    {{ editMode ? "Update" : "Submit" }}
   </button>
 </form>
