@@ -40,6 +40,14 @@ A step-by-step series of examples that tell you how to get a development environ
 
 ![structure image](./src/assets/images/diagram.png "Optional title")
 
+# design responsive
+
+breakpoints:
+
+- 768px
+- 1025px
+- 1440px
+
 ## libraries
 
 - angular material
