@@ -9,7 +9,7 @@ import { Recipe } from '../../models/recipe.model';
   styleUrl: './recipe-list.component.scss',
 })
 export class RecipeListComponent implements OnInit {
-  public recipes$!: Observable<Recipe[]>;
+  public recipes: Recipe[] = [];
 
   constructor(private recipeService: RecipeService) {}
 
@@ -18,11 +18,13 @@ export class RecipeListComponent implements OnInit {
   }
 
   fetchRecipes() {
-    this.recipes$ = this.recipeService.getRecipes();
+    this.recipeService.getRecipes().subscribe((recipes) => {
+      this.recipes = recipes;
+    });
   }
 
-  // Refetch the recipes or remove the recipe from a local list
-  onRecipeDeleted() {
-    this.fetchRecipes();
+  onRecipeDeleted(id: number) {
+    console.log(id);
+    this.recipes = this.recipes.filter((recipe) => recipe.id !== id);
   }
 }

@@ -1,7 +1,7 @@
 <div class="grid-container">
   <app-recipe-card
-    *ngFor="let recipe of recipes$ | async"
+    *ngFor="let recipe of recipes"
     [recipe]="recipe"
-    (recipeDeleted)="onRecipeDeleted()"
+    (recipeDeleted)="onRecipeDeleted($event)"
   ></app-recipe-card>
 </div>
