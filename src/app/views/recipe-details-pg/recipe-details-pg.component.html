@@ -7,18 +7,31 @@
         {{ recipe.description }}
       </em>
     </div>
-    <div class="ingredients">
-      <h3>Ingredients</h3>
-      <ul>
-        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
-      </ul>
-    </div>
+    <article class="ingredients">
+      <h2>Ingredients</h2>
 
-    <div class="ingredients">
-      <h3>directions</h3>
-      <ol>
-        <li *ngFor="let direction of recipe.directions">{{ direction }}</li>
-      </ol>
-    </div>
+      <mat-list role="list">
+        <mat-list-item
+          role="listitem"
+          *ngFor="let ingredient of recipe.ingredients"
+          ><span class="center-list-items"
+            ><mat-icon>shopping_cart</mat-icon>{{ ingredient }}</span
+          ></mat-list-item
+        >
+      </mat-list>
+    </article>
+
+    <article class="directions">
+      <h2>directions</h2>
+      <mat-list role="list">
+        <mat-list-item
+          role="listitem"
+          *ngFor="let direction of recipe.directions"
+          ><span class="center-list-items"
+            ><mat-icon>explore</mat-icon>{{ direction }}</span
+          ></mat-list-item
+        >
+      </mat-list>
+    </article>
   </article>
 </section>

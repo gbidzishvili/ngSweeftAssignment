@@ -2,7 +2,9 @@
 section {
   display: flex;
   height: 100%;
-
+  article {
+    width: 100%;
+  }
   .meal-preview {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -39,6 +41,20 @@ section {
       .gold {
         color: $gold-color;
       }
+    }
+  }
+  h2 {
+    border-bottom: 1px solid gold;
+    padding: 0.5rem 2rem;
+  }
+  .center-list-items {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+
+    mat-icon {
+      color: $orange-dark-color;
     }
   }
 }

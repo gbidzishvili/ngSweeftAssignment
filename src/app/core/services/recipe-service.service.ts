@@ -18,5 +18,7 @@ export class RecipeService {
     // return this.http.put('http://localhost:3000/recipes', recipe);
     console.log('id is ', id);
   }
-  deleteRecipe(id: number) {}
+  deleteRecipe(id: number) {
+    return this.http.delete(`http://localhost:3000/recipes/${id}`);
+  }
 }
