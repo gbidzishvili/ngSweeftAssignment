@@ -15,11 +15,11 @@
         <mat-icon class="description-icon">favorite</mat-icon>
         <span>favorite</span>
       </div>
-      <div class="description-inner-cont">
+      <div (click)="edit(recipe.id)" class="description-inner-cont">
         <mat-icon class="description-icon">edit_outlined</mat-icon>
         <span>edit</span>
       </div>
-      <div class="description-inner-cont">
+      <div (click)="deleteRecipe(recipe.id)" class="description-inner-cont">
         <mat-icon class="description-icon">delete_outlined</mat-icon>
         <span>delete</span>
       </div>

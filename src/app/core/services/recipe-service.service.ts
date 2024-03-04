@@ -5,7 +5,7 @@ import { Recipe } from '../../views/recipe-home-pg/models/recipe.model';
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeServiceService {
+export class RecipeService {
   constructor(private http: HttpClient) {}
 
   createRecipe(recipe: Recipe) {
@@ -14,6 +14,9 @@ export class RecipeServiceService {
   getRecipes(): Observable<any> {
     return this.http.get('http://localhost:3000/recipes');
   }
-  updateRecipe() {}
-  deleteRecipe() {}
+  updateRecipe(id: number) {
+    // return this.http.put('http://localhost:3000/recipes', recipe);
+    console.log('id is ', id);
+  }
+  deleteRecipe(id: number) {}
 }

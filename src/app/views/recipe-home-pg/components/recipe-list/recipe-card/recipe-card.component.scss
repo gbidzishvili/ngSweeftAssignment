@@ -1,3 +1,4 @@
+@use "../../../../../shared/styles/palette" as *;
 mat-card {
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -12,8 +13,8 @@ mat-card {
       bottom: 0;
       right: 1rem;
       transform: translatey(50%);
-      background-color: #4caf50;
-      color: white;
+      background-color: $green-color;
+      color: $white-color;
       border-radius: 50%;
       padding: 10px;
       display: flex;
@@ -34,11 +35,6 @@ mat-card {
     padding: 1.7rem;
     min-height: 22.2rem;
     min-width: 28.5rem;
-    .stars mat-icon {
-      color: #ffd700;
-      font-size: 1.5rem;
-      height: 2rem;
-    }
     mat-card-title {
       display: flex;
       align-items: center;
@@ -63,18 +59,15 @@ mat-card {
         flex-direction: column;
         mat-icon {
           align-self: center;
-          // color: rgb(31, 31, 31);
           transition: transform 0.3s ease;
         }
       }
       &-inner-cont:hover {
-        // opacity: 0.5;
         color: rgb(31, 31, 31);
         cursor: pointer;
       }
       span {
         font-weight: 500;
-        // color: black;
       }
     }
     button {
@@ -82,9 +75,9 @@ mat-card {
       padding: 1rem;
       border-radius: 50px;
       font-weight: bold;
-      color: orange;
-      border: 2px solid orange;
-      background-color: #fff;
+      color: $orange-light-color;
+      border: 2px solid $orange-light-color;
+      background-color: $white-color;
       cursor: pointer;
       transition: color 0.2s ease-in-out, background-color 200ms ease-in-out;
     }
@@ -93,10 +86,14 @@ mat-card {
       padding: 1rem;
       border-radius: 50px;
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(90deg, orange 0%, rgb(255, 123, 0) 100%);
-      border: 2px solid #fff;
-      background-color: orange;
+      color: $white-color;
+      background: linear-gradient(
+        90deg,
+        $orange-light-color 0%,
+        $orange-dark-color 100%
+      );
+      border: 2px solid$white-color;
+      background-color: $orange-light-color;
     }
   }
   &:hover {

@@ -7,7 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { RecipeServiceService } from '../../core/services/recipe-service.service';
+import { RecipeService } from '../../core/services/recipe-service.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ImgFileUploadService } from './services/image-upload/img-file-upload.service';
@@ -31,7 +31,7 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
   };
   constructor(
     private fb: FormBuilder,
-    private recipeService: RecipeServiceService,
+    private recipeService: RecipeService,
     private imgFileUploadService: ImgFileUploadService,
     private router: Router
   ) {}
@@ -81,6 +81,16 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
   }
   // display error on invalid input
   checkIfInputHasError(control: string, error: string): boolean | undefined {
+    // check formArray
+    if (control.includes('ingredients') || control.includes('directions')) {
+      let formArr = this.recipeForm.get?.(control.split('-')[0]) as FormArray;
+      let idx = Number(control.split('-')[1]);
+      console.log(idx);
+      return (
+        formArr?.controls[idx].touched && formArr?.controls[idx].hasError(error)
+      );
+    }
+    // check form control
     return (
       this.recipeForm.get(control)?.touched &&
       this.recipeForm.get(control)?.hasError(error)
@@ -88,6 +98,7 @@ export class RecipeFormPgComponent implements OnInit, OnDestroy {
   }
 
   onFormsubmit() {
+    console.log('recipeForm', this.recipeForm);
     this.recipeForm.markAllAsTouched();
     if (this.recipeForm.valid) {
       this.formSubscription = this.recipeService

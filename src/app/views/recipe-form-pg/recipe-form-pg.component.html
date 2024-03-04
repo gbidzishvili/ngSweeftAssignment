@@ -4,12 +4,11 @@
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" />
-      <mat-error *ngIf="recipeForm.invalid">
-        <ng-container *ngFor="let errorType of errors">
-          <span *ngIf="checkIfInputHasError('name', errorType)">
-            {{ errorMessages[errorType] }}</span
-          >
-        </ng-container>
+      <mat-error *ngIf="checkIfInputHasError('name', 'required')">
+        <span> * This field is required </span>
+      </mat-error>
+      <mat-error *ngIf="checkIfInputHasError('name', 'maxlength')">
+        <span> * Text cannot exceed 20 characters </span>
       </mat-error>
     </mat-form-field>
   </div>
@@ -17,12 +16,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" />
-      <mat-error *ngIf="recipeForm.invalid">
-        <ng-container *ngFor="let errorType of errors">
-          <span *ngIf="checkIfInputHasError('description', errorType)">
-            {{ errorMessages[errorType] }}</span
-          >
-        </ng-container>
+      <mat-error *ngIf="checkIfInputHasError('description', 'required')">
+        <span> This field is required </span>
       </mat-error>
     </mat-form-field>
   </div>
@@ -63,12 +58,10 @@
           class="remove remove-direction"
           >close</mat-icon
         >
-        <mat-error *ngIf="recipeForm.invalid">
-          <ng-container *ngFor="let errorType of errors">
-            <span *ngIf="checkIfInputHasError('description', errorType)">
-              {{ errorMessages[errorType] }}</span
-            >
-          </ng-container>
+        <mat-error
+          *ngIf="checkIfInputHasError('ingredients-' + idx, 'required')"
+        >
+          <span> This field is required </span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -94,12 +87,10 @@
           class="remove remove-direction"
           >close</mat-icon
         >
-        <mat-error *ngIf="recipeForm.invalid">
-          <ng-container *ngFor="let errorType of errors">
-            <span *ngIf="checkIfInputHasError('description', errorType)">
-              {{ errorMessages[errorType] }}</span
-            >
-          </ng-container>
+        <mat-error
+          *ngIf="checkIfInputHasError('directions-' + idx, 'required')"
+        >
+          <span> This field is required </span>
         </mat-error>
       </mat-form-field>
     </div>
